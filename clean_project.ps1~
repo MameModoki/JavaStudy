@@ -1,0 +1,26 @@
+# プロジェクトのディレクトリに移動
+cd "C:\Users\tellm\IdeaProjects\JavaStudy"
+
+# target フォルダを削除（存在チェック付き）
+if (Test-Path target) {
+    Remove-Item -Recurse -Force target
+    Write-Host "target フォルダを削除しました。"
+} else {
+    Write-Host "target フォルダは存在しません。"
+}
+
+# logs フォルダを削除（存在チェック付き）
+if (Test-Path logs) {
+    Remove-Item -Recurse -Force logs
+    Write-Host "logs フォルダを削除しました。"
+} else {
+    Write-Host "logs フォルダは存在しません。"
+}
+
+# src 以下の Java ファイルを一覧表示
+Write-Host ""
+Write-Host "プロジェクト内の Java ファイル一覧:"
+Get-ChildItem -Path "src" -Recurse -Filter "*.java"
+
+Write-Host ""
+Write-Host "クリーンアップ完了！"
